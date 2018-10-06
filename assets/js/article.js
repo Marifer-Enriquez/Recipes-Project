@@ -23,7 +23,8 @@ $("#search-btn").on("click", function(event){
         var link=$("<a>");
         link.attr("href", articleURL);
         link.append(title);
-
+        $("#howtotest").append(link);
+        $("#howtotest").append("<br>");
         }
     });
 });
