@@ -1,0 +1,84 @@
+#ingredients{
+    width:500px;
+    float:left;
+
+}
+
+
+#ingredientsadded{
+    margin-right:20px;
+    margin-left:20px;
+    float:left;
+    width:500px;
+}
+
+footer {
+    position:fixed;
+    clear: both;
+    width:100%;
+    background:#666666;
+    background-color: #666666;
+    height: 50px;
+    margin-bottom: 0%;
+   
+    bottom:0%;
+    margin-top: 150px;
+    left:0;
+    border-top: 5px solid #4aaaa5;
+    text-align: center;
+    color:white;
+    position:fixed;
+   
+  }
+
+  .newingredient{
+background-color: #4aaaa5;
+color:white;
+width:100px;
+text-align: center;
+  }
+  
+
+  #results{
+
+    clear: both;
+
+  };
+
+
+ #results-section{
+     float:left;
+
+ }
+
+ #resultstest{
+     float:left;                
+ }
+
+
+ #howto{
+     clear:both;
+      height:200px;
+
+ }
+
+
+ #nuevaresultsection{
+   clear:both; 
+ }
+
+ 
+
+/* Add border to recipe images*/
+.recipe-image { 
+  border: 1px solid #264653;
+ }
+
+
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+

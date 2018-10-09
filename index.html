@@ -1,14 +1,315 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootcamp Team Project 1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+  <meta charset="UTF-8">
+  <title>Recipe Search</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://use.fontawesome.com/abd289e58f.js"></script>
+
+
+
+
+
+
+
+
 </head>
+
 <body>
+
+  <!-- Main Bootstrap Search -->
+  <div class="container">
+
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron" style="background-color: #20315A ; color: white;">
+      <h1 class="text-center">
+        <strong>
+          <i class="material-icons"></i>Recipe Search</strong>
+      </h1>
+    </div>
+
+    <!-- Row for the ingredients added -->
+    <div class="row" id="ingredients">
+      <div class="col-sm-12">
+        <br>
+        <!-- First card is for handling the search parameters -->
+        <div class="card">
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-list-alt"></i> Search Ingredients</strong>
+          </div>
+          <div class="card-body">
+
+
+
+            <!-- Here we create an HTML Form for handling the inputs-->
+            <form role="form">
+
+              <!-- Here we create the text box for capturing the search term-->
+              <div class="form-group">
+                <label for="search">Please, add your ingredients</label>
+                <input type="text" class="form-control" id="search-term">
+              </div>
+
+              <!-- Here the search button -->
+              <button type="submit" class="btn btn-default" id="run-search">
+                <i class="fa fa-search"></i> Search</button>
+              <button class="btn btn-default" id="clear-all">
+                <i class="fa fa-trash"></i> Clear Results</button>
+              <input id="add-ingredient" type="submit" value="Add Ingredient" class="btn btn-info">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Here is the card for the ingredients added -->
+    <div class="row" id="ingredientsadded">
+      <div class="col-sm-12">
+        <br>
+        <div class="card">
+
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-table"></i> Ingredients</strong>
+          </div>
+
+          <div class="card-body" id="article-section">
+            <p id="losingredientes"></p>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="row" id="nuevaresultsection">
+      <div class="col s12 loggedin-content">
+        <div id="recipe-list" class="section">
+          <div id="recipe1" class="col l4 m6 s12">
+          </div>
+          <div id="recipe2" class="col l4 m6 s12">
+          </div>
+          <div id="recipe3" class="col l4 m6 s12">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light col s4" type="submit" style="display:none; margin-bottom:10px;float:right"
+      name="action" id="load-more">Load More</button>
+
+
     
+    <div id="text2">
+
+
+    </div>
+
+    <div class="row" id="howto">
+      <div class="col-sm-12">
+        <br>
+
+        <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+        <div class="card">
+
+          <!-- card Heading for the retrieved articles box -->
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-table"></i> howto</strong>
+          </div>
+
+          <!-- This main card will hold each of the resulting articles -->
+          <div class="card-body" id="howtosection">
+            <div id="howtotest"></div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer>
+    <div class="thefooter">
+      Copyright &copy;
+    </div>
+  </footer>
+
+  <!-- jQuery JS -->
+
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/javascript/app2.js"></script>
+
+  <!-- Code to the JavaScript File -->
+
+  <!--
+  <script type="text/javascript">
+    var apiURL = "";
+    var search = "";
+    var termsNumber = 5;
+
+
+
+    var Picarray = ["picture1", "picture2", "picture3", "picture4", "picture5", "picture6", "picture7", "picture8",
+      "picture9", "picture10"
+    ];
+
+    var manzanarray = ["mazana1", "manzana2", "manzana3", "manzana4", "manzana5", "manzana6", "manzana7", "manzana8",
+      "manzana9", "manzana10"
+    ];
+
+    var recetas = ["hola1", "hola2", "hola3", "hola4", "hola5", "hola6", "hola7", "hola8", "hola9", "hola10"];
+ 
+
+    var ingredientes = ["azucar miel sal", "azucar miel sal", "azucar miel sal"];
+
+    $("#add-ingredient").on("click", function (event) {
+      event.preventDefault();
+      var ingredient = $("#search-term").val().trim();
+      if (ingredient == "") {
+        return false;
+      }
+      newP = $("<p>");
+      newP.addClass("newingredient");
+      newP.text(ingredient + " ");
+
+      $("#search-term").empty();
+
+      $("#losingredientes").prepend(newP);
+
+
+
+
+    });
+
+
+
+$("p").on("click", function (event) {
+
+      $(".newingredient").hide();
+
+    });
+
+
+    $("#run-search").on("click", function (event) {
+          event.preventDefault();
+
+          for (i = 0; i < Picarray.length - 5; i++) {
+            var gifDiv = $("<div>");
+
+            //var newImage=('<img src = "assets/images/'+Picarray[i]+'.gif" width="300px">' + '<a href="recipe2.html" target="_blank">'+recetas[i] );
+            var newImage = ('<img src = "assets/images/' + manzanarray[i] + '.gif" width="200px">' +
+              '<a href="recipe2.html" target="_blank">' + recetas[i]);
+
+
+            gifDiv.append(newImage);
+            $("#resultstest").prepend(gifDiv);
+
+
+
+            console.log("entra al click");
+            search = $("#search-term").val();
+            console.log(termsNumber);
+
+            apiURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=" + search +
+              "?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
+
+            $.ajax({
+              url: apiURL,
+              method: "GET"
+            }).then(function (result) {
+              // console.log(result);
+
+              for (var i = 0; i < termsNumber; i++) {
+                var title = result.response.docs[i].headline.main;
+                var articleURL = result.response.docs[i].web_url;
+                var link = $("<a>");
+                link.attr("href", articleURL);
+                link.append(title);
+                $("#howtotest").append(link);
+                $("#howtotest").append("<br>");
+
+
+
+              }
+            });
+
+          }
+
+    });
+           
+          
+          /*
+            $("#search-btn").on("click", function(event){
+                event.preventDefault();
+                console.log("entra al click");
+                search=$("#search-term").val();
+                console.log(termsNumber);
+
+                apiURL="https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="+search+"?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
+
+                $.ajax({
+                    url: apiURL,
+                    method: "GET"
+                }).then(function(result) {
+                    // console.log(result);
+
+                    for(var i=0;i<termsNumber;i++){
+                    var title=result.response.docs[i].headline.main;
+                    var articleURL=result.response.docs[i].web_url;
+                    var link=$("<a>");
+                    link.attr("href", articleURL);
+                    link.append(title);
+                    $("#howtotest").append(link);
+                   $("#howtotest").append("<br>");
+                    }
+                });
+            });
+            */
+  </script>
+-->
+
 </body>
+
 </html>
