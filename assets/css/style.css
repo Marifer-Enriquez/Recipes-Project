@@ -1,0 +1,150 @@
+
+
+
+
+
+#ingredients{
+    width:100%;
+    float:left;
+
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+  background-image:url("../images/background.jpg");
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+
+
+}
+
+
+
+#ingredientsadded{
+    
+    float:left;
+    width:100%;
+}
+
+#howto{
+overflow:auto;
+clear:both;
+position:relative;
+float: both;
+}
+
+.page-footer{
+ background-color:#D2691E;
+}
+/*
+footer{
+  height:100px;
+ position:fixed; 
+ color:#00008B;
+}
+*/
+
+/*footer {
+    position:fixed;
+    clear: both;
+    width:100%;
+    background:#666666;
+    background-color: #666666;
+    height: 50px;
+    margin-bottom: 0%;
+   
+    bottom:0%;
+    margin-top: 150px;
+    left:0;
+    border-top: 5px solid #4aaaa5;
+    text-align: center;
+    color:white;
+    position:fixed;
+   
+  }
+*/
+
+  .newingredient{
+background-color: #4aaaa5;
+color:white;
+width:100px;
+text-align: center;
+  }
+  
+
+  #results{
+
+    clear: both;
+
+  };
+
+
+ #results-section{
+     float:left;
+
+ }
+
+ #resultstest{
+     float:left;                
+ }
+
+
+ #howto{
+     clear:both;
+      height:200px;
+
+ }
+
+
+ #nuevaresultsection{
+   clear:both; 
+ }
+
+ .btn{
+   background-color: #D2691E;
+ }
+
+/* Add border to recipe images*/
+.recipe-image { 
+  border: 1px solid #264653;
+   color:green;
+
+}
+
+
+#thenav
+{
+background-color:#D2691E;
+}
+
+.card-header{
+background-color:#01374F;
+color:white;
+};
+
+#run-search{
+
+background-color:#58F315;
+color: #58F315;
+
+}
+
+
+
+.card-content{
+  background-color: beige;
+  color:red;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+

@@ -1,4 +1,466 @@
-<html> 
-<head>Hola, jorge cambio </head>                                                                                                                                                                                                                                                                      </head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Search</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://use.fontawesome.com/abd289e58f.js"></script>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" id="thenav">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">SuperRecipe</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li data-toggle="modal" data-target="#exampleModal"> Help</li>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <ul class="collapsible black-text" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header">How to use the App?</div>
+                  <div class="collapsible-body">
+                    <span>You have to add your ingredients using the "add ingredinet" button once finished, you will
+                      see the first 10 recipes"</span>
+                </li>
+                <br>
+                <li>
+                    <div class="collapsible-header">Can I see more than 10 Recipes?</div>
+                    <div class="collapsible-body">
+                      <span>Yes, it is possible, using the "load-more button"</span>
+                  </li>
+                  <br>
+                  <li>
+                      <div class="collapsible-header">Who build the app?</div>
+                      <div class="collapsible-body">
+                        <span>Group of students of the Tec Bootcamp</span>
+                    </li>
+
+
+            </div>
+
+
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+
+    </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- Main Bootstrap Search -->
+  <div class="container">
+
+    <!-- Jumbotron for Title -->
+
+
+    <!-- Row for the ingredients added -->
+    <div class="row" id="ingredients">
+      <div class="col-sm-12">
+        <br>
+        <!-- First card is for handling the search parameters -->
+        <div class="card">
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-list-alt"></i> Search Ingredients</strong>
+          </div>
+          <div class="card-body">
+
+
+
+            <!-- Here we create an HTML Form for handling the inputs-->
+            <form role="form">
+
+              <!-- Here we create the text box for capturing the search term-->
+              <div class="form-group">
+                <label for="search">Please, add your ingredients</label>
+                <input type="text" class="form-control" id="search-term">
+              </div>
+
+              <!-- Here the search button -->
+              <button type="submit" class="btn btn-default" id="run-search">
+                <i class="fa fa-search"></i> Search</button>
+              <button class="btn btn-default " id="clear-all">
+                <i class="fa fa-trash"></i> Clear Results</button>
+              <input id="add-ingredient" type="submit" value="Add Ingredient" class="btn btn-default btncolor">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Here is the card for the ingredients added -->
+    <div class="row" id="ingredientsadded">
+      <div class="col-sm-12">
+        <br>
+        <div class="card">
+
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-table"></i> Ingredients</strong>
+          </div>
+
+          <div class="card-body" id="article-section">
+            <p id="losingredientes"></p>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="row" id="nuevaresultsection">
+      <div class="col s12 ">
+        <div id="recipe-list" class="section">
+          <div id="recipe1" class="col l4 m6 s12">
+          </div>
+          <div id="recipe2" class="col l4 m6 s12">
+          </div>
+          <div id="recipe3" class="col l4 m6 s12">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light col s4" type="submit" style="display:none"
+      name="action" id="load-more">Load More</button>
+
+
+
+
+
+    <div class="row" id="howto">
+      <div class="col-sm-12">
+        <br>
+
+        <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+        <div class="card">
+
+          <!-- card Heading for the retrieved articles box -->
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-table"></i> New York Times Related Articles</strong>
+          </div>
+
+          <!-- This main card will hold each of the resulting articles -->
+          <div class="card-body" id="howtosection">
+            <div id="howtotest"></div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <br>
+
+
+
+
+
+  <footer class="page-footer font-small  pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">Super Recipe</h5>
+          <p>Discover your new favorite meal with a couple clicks</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+
+          <!-- Links -->
+          <h5 class="text-uppercase" data-toggle="modal" data-target="#exampleModal2">About</h5>
+
+          <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                  <ul class="collapsible black-text" data-collapsible="accordion">
+                      <li>
+                        <div class="collapsible-header">About the App</div>
+                        <div class="collapsible-body">
+                          <span>
+                              Discover your new favorite meal with a couple clicks
+                          </span>
+                      </li>
+                  <ul>
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel2">SUPER RECIPE 2018</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+               
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Produced By</a>
+            </li>
+            <li>
+              <a href="#!">Maria Fernada Enriquez</a>
+            </li>
+            <li>
+              <a href="#!">Walter Alamada</a>
+            </li>
+            <li>
+              <a href="#!">Jorge Castellanos</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+
+
+
+  <!--
+  <footer>
+    <div class="thefooter">
+      Copyright &copy;
+    </div>
+  </footer>
+
+-->
+
+
+
+  <!-- jQuery JS -->
+
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/javascript/app2.js"></script>
+
+  <!-- Code to the JavaScript File -->
+
+  <!--
+  <script type="text/javascript">
+    var apiURL = "";
+    var search = "";
+    var termsNumber = 5;
+
+
+
+    var Picarray = ["picture1", "picture2", "picture3", "picture4", "picture5", "picture6", "picture7", "picture8",
+      "picture9", "picture10"
+    ];
+
+    var manzanarray = ["mazana1", "manzana2", "manzana3", "manzana4", "manzana5", "manzana6", "manzana7", "manzana8",
+      "manzana9", "manzana10"
+    ];
+
+    var recetas = ["hola1", "hola2", "hola3", "hola4", "hola5", "hola6", "hola7", "hola8", "hola9", "hola10"];
+ 
+
+    var ingredientes = ["azucar miel sal", "azucar miel sal", "azucar miel sal"];
+
+    $("#add-ingredient").on("click", function (event) {
+      event.preventDefault();
+      var ingredient = $("#search-term").val().trim();
+      if (ingredient == "") {
+        return false;
+      }
+      newP = $("<p>");
+      newP.addClass("newingredient");
+      newP.text(ingredient + " ");
+
+      $("#search-term").empty();
+
+      $("#losingredientes").prepend(newP);
+
+
+
+
+    });
+
+
+
+$("p").on("click", function (event) {
+
+      $(".newingredient").hide();
+
+    });
+
+
+    $("#run-search").on("click", function (event) {
+          event.preventDefault();
+
+          for (i = 0; i < Picarray.length - 5; i++) {
+            var gifDiv = $("<div>");
+
+            //var newImage=('<img src = "assets/images/'+Picarray[i]+'.gif" width="300px">' + '<a href="recipe2.html" target="_blank">'+recetas[i] );
+            var newImage = ('<img src = "assets/images/' + manzanarray[i] + '.gif" width="200px">' +
+              '<a href="recipe2.html" target="_blank">' + recetas[i]);
+
+
+            gifDiv.append(newImage);
+            $("#resultstest").prepend(gifDiv);
+
+
+
+            console.log("entra al click");
+            search = $("#search-term").val();
+            console.log(termsNumber);
+
+            apiURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=" + search +
+              "?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
+
+            $.ajax({
+              url: apiURL,
+              method: "GET"
+            }).then(function (result) {
+              // console.log(result);
+
+              for (var i = 0; i < termsNumber; i++) {
+                var title = result.response.docs[i].headline.main;
+                var articleURL = result.response.docs[i].web_url;
+                var link = $("<a>");
+                link.attr("href", articleURL);
+                link.append(title);
+                $("#howtotest").append(link);
+                $("#howtotest").append("<br>");
+
+
+
+              }
+            });
+
+          }
+
+    });
+           
+          
+          /*
+            $("#search-btn").on("click", function(event){
+                event.preventDefault();
+                console.log("entra al click");
+                search=$("#search-term").val();
+                console.log(termsNumber);
+
+                apiURL="https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="+search+"?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
+
+                $.ajax({
+                    url: apiURL,
+                    method: "GET"
+                }).then(function(result) {
+                    // console.log(result);
+
+                    for(var i=0;i<termsNumber;i++){
+                    var title=result.response.docs[i].headline.main;
+                    var articleURL=result.response.docs[i].web_url;
+                    var link=$("<a>");
+                    link.attr("href", articleURL);
+                    link.append(title);
+                    $("#howtotest").append(link);
+                   $("#howtotest").append("<br>");
+                    }
+                });
+            });
+            */
+  </script>
+-->
+
+</body>
 
 </html>
