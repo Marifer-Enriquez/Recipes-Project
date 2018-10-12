@@ -42,7 +42,7 @@
   <nav class="navbar navbar-inverse" id="thenav">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">SuperRecipe</a>
+        <a class="navbar-brand" href="#">What's for dinner? </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li data-toggle="modal" data-target="#exampleModal"> Help</li>
@@ -176,6 +176,8 @@
       </div>
     </div>
 
+
+    <!--Button for load more recipes -->
     <button class="btn waves-effect waves-light col s4" type="submit" style="display:none"
       name="action" id="load-more">Load More</button>
 
@@ -230,8 +232,8 @@
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          <h5 class="text-uppercase">Super Recipe</h5>
-          <p>Discover your new favorite meal with a couple clicks</p>
+          <h5 class="text-uppercase">What's for dinner?</h5>
+          <p>It always happened to us, that we wanted to make something to eat but we didn’t know what to cook, we just stared at the fridge looking at the ingredients but with no idea how to mix and cook them. That’s why we created What for dinner?  So we can have an immediate solution.</p>
 
         </div>
         <!-- Grid column -->
@@ -254,12 +256,12 @@
                         <div class="collapsible-header">About the App</div>
                         <div class="collapsible-body">
                           <span>
-                              Discover your new favorite meal with a couple clicks
+                            Have you ever been hungry, looked at the fridge and saw the ingredients but you don’t know what to cook? Well we have the solution for you. With What’s for dinner? You just add the ingredients you want and we’ll look for the perfect recipe for you to cook! 
                           </span>
                       </li>
                   <ul>
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel2">SUPER RECIPE 2018</h5>
+                  <h5 class="modal-title" id="exampleModalLabel2">WHAT'S FOR DINNER?</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -279,16 +281,16 @@
 
           <ul class="list-unstyled">
             <li>
-              <a href="#!">Produced By</a>
+              Produced By
             </li>
             <li>
-              <a href="#!">Maria Fernada Enriquez</a>
+              Maria Fernada Enriquez
             </li>
             <li>
-              <a href="#!">Walter Alamada</a>
+              Walter Almada
             </li>
             <li>
-              <a href="#!">Jorge Castellanos</a>
+              Jorge Castellanos
             </li>
           </ul>
 
@@ -314,14 +316,7 @@
 
 
 
-  <!--
-  <footer>
-    <div class="thefooter">
-      Copyright &copy;
-    </div>
-  </footer>
-
--->
+ 
 
 
 
@@ -332,134 +327,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <script src="assets/javascript/app2.js"></script>
 
-  <!-- Code to the JavaScript File -->
-
-  <!--
-  <script type="text/javascript">
-    var apiURL = "";
-    var search = "";
-    var termsNumber = 5;
-
-
-
-    var Picarray = ["picture1", "picture2", "picture3", "picture4", "picture5", "picture6", "picture7", "picture8",
-      "picture9", "picture10"
-    ];
-
-    var manzanarray = ["mazana1", "manzana2", "manzana3", "manzana4", "manzana5", "manzana6", "manzana7", "manzana8",
-      "manzana9", "manzana10"
-    ];
-
-    var recetas = ["hola1", "hola2", "hola3", "hola4", "hola5", "hola6", "hola7", "hola8", "hola9", "hola10"];
  
-
-    var ingredientes = ["azucar miel sal", "azucar miel sal", "azucar miel sal"];
-
-    $("#add-ingredient").on("click", function (event) {
-      event.preventDefault();
-      var ingredient = $("#search-term").val().trim();
-      if (ingredient == "") {
-        return false;
-      }
-      newP = $("<p>");
-      newP.addClass("newingredient");
-      newP.text(ingredient + " ");
-
-      $("#search-term").empty();
-
-      $("#losingredientes").prepend(newP);
-
-
-
-
-    });
-
-
-
-$("p").on("click", function (event) {
-
-      $(".newingredient").hide();
-
-    });
-
-
-    $("#run-search").on("click", function (event) {
-          event.preventDefault();
-
-          for (i = 0; i < Picarray.length - 5; i++) {
-            var gifDiv = $("<div>");
-
-            //var newImage=('<img src = "assets/images/'+Picarray[i]+'.gif" width="300px">' + '<a href="recipe2.html" target="_blank">'+recetas[i] );
-            var newImage = ('<img src = "assets/images/' + manzanarray[i] + '.gif" width="200px">' +
-              '<a href="recipe2.html" target="_blank">' + recetas[i]);
-
-
-            gifDiv.append(newImage);
-            $("#resultstest").prepend(gifDiv);
-
-
-
-            console.log("entra al click");
-            search = $("#search-term").val();
-            console.log(termsNumber);
-
-            apiURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=" + search +
-              "?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
-
-            $.ajax({
-              url: apiURL,
-              method: "GET"
-            }).then(function (result) {
-              // console.log(result);
-
-              for (var i = 0; i < termsNumber; i++) {
-                var title = result.response.docs[i].headline.main;
-                var articleURL = result.response.docs[i].web_url;
-                var link = $("<a>");
-                link.attr("href", articleURL);
-                link.append(title);
-                $("#howtotest").append(link);
-                $("#howtotest").append("<br>");
-
-
-
-              }
-            });
-
-          }
-
-    });
-           
-          
-          /*
-            $("#search-btn").on("click", function(event){
-                event.preventDefault();
-                console.log("entra al click");
-                search=$("#search-term").val();
-                console.log(termsNumber);
-
-                apiURL="https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="+search+"?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
-
-                $.ajax({
-                    url: apiURL,
-                    method: "GET"
-                }).then(function(result) {
-                    // console.log(result);
-
-                    for(var i=0;i<termsNumber;i++){
-                    var title=result.response.docs[i].headline.main;
-                    var articleURL=result.response.docs[i].web_url;
-                    var link=$("<a>");
-                    link.attr("href", articleURL);
-                    link.append(title);
-                    $("#howtotest").append(link);
-                   $("#howtotest").append("<br>");
-                    }
-                });
-            });
-            */
-  </script>
--->
 
 </body>
 

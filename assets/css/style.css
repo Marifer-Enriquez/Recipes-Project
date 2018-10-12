@@ -135,7 +135,9 @@ color: #58F315;
 
 }
 
-
+#load-more{
+  width:150px;
+}
 
 .card-content{
   background-color: beige;
