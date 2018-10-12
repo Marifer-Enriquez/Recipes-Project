@@ -1,4 +1,4 @@
-var queryURLbase = "https://api.edamam.com/search?&app_id=90f8bc57&app_key=45392a4a053ae6f964207a3bb4b0d7a5&from=0&to=9&q=";
+//var queryURLbase = "https://api.edamam.com/search?&app_id=90f8bc57&app_key=45392a4a053ae6f964207a3bb4b0d7a5&from=0&to=9&q=";
 
 var userInput;
 var from = 0;
@@ -14,17 +14,20 @@ var apiURL = "";
 var search = "";
 var termsNumber = 5;
 
+var ingredients = [];
 
 //Add the ingredient to the BOX
 $("#add-ingredient").on("click", function (event) {
     event.preventDefault();
-    var ingredient = $("#search-term").val().trim();
-    if (ingredient == "") {
+    var newIng = $("#search-term").val().trim();
+    ingredients.push(newIng);
+    if (newIng == "") {
         return false;
     }
     newP = $("<p>");
     newP.addClass("newingredient");
-    newP.text(ingredient + " ");
+    newP.attr('data-name',newIng);
+    newP.text(newIng + " ");
 
     $("#search-term").empty();
 
@@ -34,9 +37,13 @@ $("#add-ingredient").on("click", function (event) {
 
 //If you click the ingredients hide all
 
-$("p").on("click", function (event) {
-
-    $(".newingredient").hide();
+$(document).on("click",'.newingredient', function () {
+    var name = $(this).attr('data-name');
+    var i = ingredients.indexOf(name);
+    ingredients.splice(i,1);
+    $(this).detach();
+    
+    
 });
 
 
@@ -45,7 +52,7 @@ function testAjax(queryURL) {
         .then((resp) => resp.json())
         .then(function (data) {
             console.log(data);
-            console.log(queryURLbase)
+            
             for (var i = 0; i < 9; i++) {
 
                 //create recipe card.
@@ -147,12 +154,16 @@ $("#run-search").on("click", function (e) {
 
     // $("#search-term")
     //Grab the user input from the main word search text box.
-    userInput = $("#search-term").val().trim().toLowerCase();
+    var search = ingredients.toString().replace(/,/g,'+');
+    var numOfIngredients = ingredients.length;
+    var appId = '0722400';
+    var appKey = '38642907c009a258fa149a594cca043d';
+    var queryURL = `https://api.edamam.com/search?q=${search}&ingr=${numOfIngredients+1}&app_id=${appId}e&app_key=${appKey}`;
 
     // Integrate user input into our ajax request
-    var searchURL = queryURLbase + userInput;
-    search = $("#search-term").val();
-    testAjax(searchURL);
+    console.log(queryURL);
+    
+    testAjax(queryURL);
 
     // Clear previous search
     $("#recipe-list").empty();
@@ -203,13 +214,15 @@ $("#load-more").on("click", function (e) {
     //Grab the user input from the main word search text box.
     from += 10;
     to += 10;
+    var search = ingredients.toString().replace(/,/g,'+');
+    var numOfIngredients = ingredients.length;
+    var appId = '0722400';
+    var appKey = '38642907c009a258fa149a594cca043d';
+    var queryURL = `https://api.edamam.com/search?q=${search}&ingr=${numOfIngredients+1}&app_id=${appId}e&app_key=${appKey}&from=${from}&to=${to}`;
 
     // URL restatement
-    var queryURLbase2 = "https://api.edamam.com/search?&app_id=4a5d81a2&app_key=379308ab9da9a8ee47f63563d2774ac4&q="
-    var queryURLbase3 = queryURLbase2 + userInput;
-    var queryURLbase4 = queryURLbase3 + "&from=" + from;
-    queryURLbase5 = queryURLbase4 + "&to=" + to;
-    testAjax(queryURLbase5);
+    
+    testAjax(queryURL);
 });
 
 
