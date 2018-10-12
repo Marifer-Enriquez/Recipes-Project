@@ -101,6 +101,16 @@ text-align: center;
 
  }
 
+ #twitter{
+  clear:both;
+  height:200px;
+
+}
+
+#forgraphs{
+color:white;
+
+}
 
  #nuevaresultsection{
    clear:both; 
