@@ -124,11 +124,6 @@ function testAjax(queryURL) {
                 var saveBtn = $("<i>");
                 saveBtn.addClass("small fa fa-cutlery tooltipped");
 
-                saveBtn.attr("data-name", [i]).attr("data-position", "top").attr("data-tooltip", "Click to save recipe to Recipe box.");
-
-                $('.tooltipped').tooltip({
-                    delay: 30
-                });
 
                 cardAction.append(link, saveBtn);
                 cardContent.after(cardAction);
@@ -205,7 +200,7 @@ $("#load-more").on("click", function (e) {
     to += 10;
 
     // URL restatement
-    var queryURLbase2 = "https://api.edamam.com/search?&app_id=4a5d81a2&app_key=379308ab9da9a8ee47f63563d2774ac4&q="
+    var queryURLbase2 = "https://api.edamam.com/search?&app_id=90f8bc57&app_key=45392a4a053ae6f964207a3bb4b0d7a5&q="
     var queryURLbase3 = queryURLbase2 + userInput;
     var queryURLbase4 = queryURLbase3 + "&from=" + from;
     queryURLbase5 = queryURLbase4 + "&to=" + to;
@@ -218,30 +213,3 @@ $("#load-more").on("click", function (e) {
 
 
 
-/*
-  $("#search-btn").on("click", function(event){
-      event.preventDefault();
-      console.log("entra al click");
-      search=$("#search-term").val();
-      console.log(termsNumber);
-
-      apiURL="https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="+search+"?sort=newest&api-key=be08fdca00144ba4ad5a1b84c731fcfd";
-
-      $.ajax({
-          url: apiURL,
-          method: "GET"
-      }).then(function(result) {
-          // console.log(result);
-
-          for(var i=0;i<termsNumber;i++){
-          var title=result.response.docs[i].headline.main;
-          var articleURL=result.response.docs[i].web_url;
-          var link=$("<a>");
-          link.attr("href", articleURL);
-          link.append(title);
-          $("#howtotest").append(link);
-         $("#howtotest").append("<br>");
-          }
-      });
-  });
-  */
